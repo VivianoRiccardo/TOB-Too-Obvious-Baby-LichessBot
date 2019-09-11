@@ -12,8 +12,8 @@ import ast
 
 KEEP_RUNNING = True
 
-my_client_id = 'czUJQMfAgszVkpae'
-my_client_secret = 'gZlKE2KLsq0awxu5prL1Xoh2lUlbkisQ'
+my_client_id = ''#put your client id
+my_client_secret = ''#put your client secret
 authorization_url = 'https://oauth.lichess.org/oauth/authorize'
 access_token_url = 'https://oauth.lichess.org/oauth'
 base_url = 'https://lichess.org/'
