@@ -1,1 +1,1 @@
-# OpenSource-Lichess-Bot-Helper
+# OpenSource-Lichess-Bot
