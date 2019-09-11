@@ -32,3 +32,8 @@ according to the newest stockfish chess engine
 you can now run src/create_unlimited_session.py
 it will create a .bin file in the bin directory with the session of your logged lichess account
 and now running src/use_id_session.py you can get all information about your logged account
+
+# Next implementations
+
+- Graphic interface
+- Connect stockfish backend engine with the interface
