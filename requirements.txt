@@ -1,0 +1,12 @@
+python files libraries
+
+http.server
+urllib.parse
+rauth
+requests_oauthlib
+threading
+time
+json
+webbrowser
+pickle
+ast
