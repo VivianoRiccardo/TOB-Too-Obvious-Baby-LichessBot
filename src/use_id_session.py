@@ -77,7 +77,7 @@ class IdSession:
     def getLiveStreamer(self):
         return self.session.get(self.live_streamers)
 
-session = IdSession("bottest2.bin")
+session = IdSession("../bin/bottest2.bin")
 r = session.getAccountInformation()
 ids = session.getContent(r)["id"]
 usr = session.getContent(r)["username"]
