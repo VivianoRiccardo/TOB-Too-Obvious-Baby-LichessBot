@@ -15,25 +15,10 @@ according to the newest stockfish chess engine
 
 # Create a Lichess webApp
 
-1) go to https://lichess.org/account/oauth/app/create
-2) create a webApp setting Callback URL to http://127.0.0.1:8080
+1) run interface.py and click on "create a web Application"
+
+2) you need to put the callback url as the one in the image below
 
  <p align="center">
   <img src="https://i.ibb.co/tKrTCfw/Annotazione-2019-09-10-113314.png" alt="logo">
 </p>
-3) copy and paste client id and client secret in the src/create_unlimited_session.py file
-
- <p align="center">
-  <img src="https://i.ibb.co/cr68MN5/Annotazione-2019-09-10-113903.png" alt="logo">
-</p>
-
-# Save your session and use it whenever you want
-
-you can now run src/create_unlimited_session.py
-it will create a .bin file in the bin directory with the session of your logged lichess account
-and now running src/use_id_session.py you can get all information about your logged account
-
-# Next implementations
-
-- Graphic interface
-- Connect stockfish backend engine with the interface
