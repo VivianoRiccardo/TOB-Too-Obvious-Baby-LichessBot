@@ -106,12 +106,6 @@ class IdSession:
     def getRealTimeGameById(self,ids):
         print(self.streaming_game[:self.streaming_game.find('{')]+ids)
         return self.session.get(self.streaming_game[:self.streaming_game.find('{')]+ids)
-session = IdSession("../bin/bottest2.bin")
-r = session.getAccountInformation()
-ids = session.getContent(r)["id"]
-usr = session.getContent(r)["username"]
-r = session.getOngoingGames("9")
-print(session.getStatusCode(r))
-print(session.getContent(r))
+
 
 
