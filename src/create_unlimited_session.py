@@ -73,6 +73,6 @@ if __name__ == "__main__":
     data = {'code': code,'grant_type': 'authorization_code','redirect_uri': redirect_uri}
     session = service.get_auth_session(data=data, decoder=new_decoder)
     r = session.get('/api/account')
-    f = open(str(json.loads("../bin/"+str(r.content.decode('utf-8')))["id"])+".bin","wb")
+    f = open("../bin/"+str(json.loads(str(r.content.decode('utf-8')))["id"])+".bin","wb")
     pickle.dump(session, f)
     f.close() #save session of the current id player
