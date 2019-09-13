@@ -13,6 +13,11 @@ according to the newest stockfish chess engine
 
 - Lichess account
 
+# Run
+
+python3 interface.py
+
+
 # Create a Lichess webApp
 
 1) run interface.py and click on "create a web Application"
@@ -22,3 +27,13 @@ according to the newest stockfish chess engine
  <p align="center">
   <img src="https://i.ibb.co/tKrTCfw/Annotazione-2019-09-10-113314.png" alt="logo">
 </p>
+
+# Say the Area of the Chess board:
+
+1) Click "Take a Screenshot of Lichess Board" button from interface.py
+
+2) The bot is gonna take a screenshot, so you have to  make visible in your desktop the lichess board when you click that button
+
+3) select the chess board from the saved image
+
+4) press "c" to save the chess area, press "r" to reset the chess area

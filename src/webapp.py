@@ -68,7 +68,7 @@ def bt0(self):
     webbrowser.open_new(web_app_url)
 def bt1(self):
     try:
-        f = open("client_inf.txt","r")
+        f = open("../text/client_inf.txt","r")
         global my_client_id
         my_client_id = f.readline().strip()
         global my_client_secret

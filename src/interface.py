@@ -89,7 +89,7 @@ def threaded_function2():
              
     
 def btn5u(s1,s2):
-    f = open("client_inf.txt","w")
+    f = open("../text/client_inf.txt","w")
     f.write(s1+"\n")
     f.write(s2)
     f.close()
