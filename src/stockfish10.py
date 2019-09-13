@@ -36,13 +36,4 @@ def go(p, depth=None, t=1.0, dt=0.05, verbose=False):
             put(p, "stop")
             stopped = True
 
-p = Popen("../bin/stockfish_10_x64_modern", stdout=PIPE, stdin=PIPE, universal_newlines=True)
-get(p, verbose=True)
-putget(p, 'uci')
-putget(p, 'position startpos')
-bestmove = go(p, depth=20, t=0.5)
-print(bestmove)
-put(p,'position startpos moves e2e4 e7e6')
-bestmove = go(p, depth=20, t=0.5)
-print(bestmove)
 

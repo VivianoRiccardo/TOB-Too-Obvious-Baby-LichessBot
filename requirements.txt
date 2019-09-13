@@ -12,3 +12,8 @@ pickle
 ast
 tkinter
 subprocess
+numpy
+pyautogui
+imutils
+cv2
+argparse

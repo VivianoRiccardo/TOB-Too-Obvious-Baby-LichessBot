@@ -3,10 +3,22 @@ import webapp
 import session
 import os
 from threading import Thread
+import time
+from subprocess import Popen, PIPE
+import stockfish10
+import mouse
+
+# Collect events until released
 
 there_is_session = False
 path = ""
+xy = None
 
+def btn3u():
+	global xy
+	mouse.screenshot()
+	xy = mouse.get_area()
+	
 def center_window(root,w=300, h=200):
     # get screen width and height
     ws = root.winfo_screenwidth()
@@ -40,6 +52,42 @@ def threaded_function2():
         label = tkinter.Label(window, text = "Close This Window!").pack()
         window.mainloop()
     
+    l = 'position startpos'
+    p = Popen("../bin/stockfish_10_x64_modern", stdout=PIPE, stdin=PIPE, universal_newlines=True)
+    stockfish10.get(p, verbose=True)
+    stockfish10.putget(p, 'uci')
+    stockfish10.putget(p, l)
+    move = ''
+    move_counter = 0
+    l+=' moves'
+    while(sessions.getStatusCode(r)== 200 and move_counter < 20):
+        
+        r = sessions.getOngoingGames("1")
+        if(sessions.getStatusCode(r) == 200):
+            try:
+                print(sessions.getContent(r))
+                color = sessions.getContent(r)['nowPlaying'][0]['color']
+                isMyTurn = sessions.getContent(r)['nowPlaying'][0]['isMyTurn']
+                lastMove = sessions.getContent(r)['nowPlaying'][0]['lastMove']
+                
+                
+                if(move != lastMove):
+                    move_counter = 0
+                    move = lastMove
+                    l+=' '+move
+                else:
+                    if(isMyTurn == True):
+                        move_counter+=1
+                        
+                if(isMyTurn == True):
+                    stockfish10.put(p,l)
+                    print(stockfish10.go(p, depth=20, t=0.3))
+            except:
+                pass
+    print("ciao")
+                
+             
+    
 def btn5u(s1,s2):
     f = open("client_inf.txt","w")
     f.write(s1+"\n")
@@ -62,9 +110,11 @@ def bt2(s):
         label = tkinter.Label(window, text = "try to create a session!").pack()
        
 if __name__ == "__main__":
+
+    
     window = tkinter.Tk()
     window.title("OpenSource Lichess Bot")
-    center_window(window,390,380)
+    center_window(window,460,380)
     window.resizable(0, 0)
     
     #top_frame = tkinter.Frame(window).pack()
@@ -85,7 +135,7 @@ if __name__ == "__main__":
     btn0 = tkinter.Button(window, text = "Create Web Application", fg = "black", height = 5, width = 20)
     btn1 = tkinter.Button(window, text = "Create Session", fg = "red", height = 5, width = 20)
     btn2 = tkinter.Button(window, text = "Load Lichess Profile", fg = "green", command=lambda :  bt2(entry3.get()))
-    btn3 = tkinter.Button(window, text = "Select Lichess Board", fg = "purple").grid(row = 40, column = 1)
+    btn3 = tkinter.Button(window, text = "Take a Screenshot of Lichess Board", fg = "purple", command=lambda :  btn3u()).grid(row = 40, column = 1)
     btn4 = tkinter.Button(window, text = "Let The bot Play", fg = "orange").grid(row = 50, column = 1)
     btn5 = tkinter.Button(window, text = "Save Client Inf", fg = "yellow", command=lambda :  btn5u(entry1.get(),entry2.get()))
 
@@ -98,7 +148,6 @@ if __name__ == "__main__":
     
     thread = Thread(target = threaded_function2)
     thread.start()
-    
     window.mainloop()
     thread.join()
     
