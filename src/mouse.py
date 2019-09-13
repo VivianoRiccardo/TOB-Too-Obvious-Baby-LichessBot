@@ -67,4 +67,4 @@ def get_area():
     # close all open windows
     cv2.destroyAllWindows()
     
-    return lefPt
+    return refPt

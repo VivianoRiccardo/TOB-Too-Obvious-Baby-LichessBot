@@ -7,18 +7,22 @@ import time
 from subprocess import Popen, PIPE
 import stockfish10
 import mouse
+import os
+import signal
 
 # Collect events until released
 
 there_is_session = False
 path = ""
 xy = None
+go_thread = True
+pid = None
 
 def btn3u():
-	global xy
-	mouse.screenshot()
-	xy = mouse.get_area()
-	
+    global xy
+    mouse.screenshot()
+    xy = mouse.get_area()
+    
 def center_window(root,w=300, h=200):
     # get screen width and height
     ws = root.winfo_screenwidth()
@@ -29,6 +33,8 @@ def center_window(root,w=300, h=200):
     root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
 def threaded_function2():
+    global pid
+    pid = os.getpid()
     global there_is_session
     while(not there_is_session):
         global there_is_session
@@ -61,7 +67,7 @@ def threaded_function2():
     move_counter = 0
     l+=' moves'
     while(sessions.getStatusCode(r)== 200 and move_counter < 20):
-        
+
         r = sessions.getOngoingGames("1")
         if(sessions.getStatusCode(r) == 200):
             try:
@@ -84,8 +90,6 @@ def threaded_function2():
                     print(stockfish10.go(p, depth=20, t=0.3))
             except:
                 pass
-    print("ciao")
-                
              
     
 def btn5u(s1,s2):
@@ -149,7 +153,9 @@ if __name__ == "__main__":
     thread = Thread(target = threaded_function2)
     thread.start()
     window.mainloop()
-    thread.join()
+    if(pid != None):
+        os.kill(pid, signal.SIGTERM)
+     
     
     
     
