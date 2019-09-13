@@ -55,14 +55,14 @@ class GP(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=GP, port=8080):
     server_address = ('localhost', 8080)
     httpd = server_class(server_address, handler_class)
-    print('Server running at localhost:8080...')
+    #print('Server running at localhost:8080...')
     while keep_running():
         thread.start()
         httpd.handle_request()
         
     global thread
     thread.join()
-    print(thread)
+    #print(thread)
 
 def bt0(self):
     webbrowser.open_new(web_app_url)

@@ -38,3 +38,12 @@ python3 interface.py
 3) select the chess board from the saved image
 
 4) press "c" to save the chess area, press "r" to reset the chess area
+
+# How to Use it
+
+You can play only 1 game each time.
+When you click take screenshot of lichess board and you saved the board area
+you can't move that board area if you want that the bot works perfectly
+otherwise you have to reclick the button.
+
+explicity video on how to use the bot starting from scratch (you have only the lichess account)

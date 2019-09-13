@@ -17,7 +17,12 @@ path = ""
 xy = None
 go_thread = True
 pid = None
+cs = False
 
+def btn4u():
+    global cs
+    cs = True
+    
 def btn3u():
     global xy
     mouse.screenshot()
@@ -32,16 +37,18 @@ def center_window(root,w=300, h=200):
     y = (hs/2) - (h/2)
     root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-def threaded_function2():
+def threaded_function2(clicks):
     global pid
     pid = os.getpid()
     global there_is_session
     while(not there_is_session):
+        global cs
+        cs = False
         global there_is_session
     global path
     sessions = session.IdSession(path)
     r = sessions.getAccountInformation()
-    print(type(sessions.getStatusCode(r)))
+    #print(type(sessions.getStatusCode(r)))
     if(sessions.getStatusCode(r) == 200):
         window = tkinter.Tk()
         window.title("Success")
@@ -63,33 +70,99 @@ def threaded_function2():
     stockfish10.get(p, verbose=True)
     stockfish10.putget(p, 'uci')
     stockfish10.putget(p, l)
-    move = ''
+    move = '-10'
     move_counter = 0
     l+=' moves'
+    g = 0
+    gameId = ''
+    new_move = 0
+    reminder = ''
+    opponent_castle = 0
     while(sessions.getStatusCode(r)== 200 and move_counter < 20):
-
+        
+        global cs
+        u = cs
+        if(u == True and g == 0):
+            window = tkinter.Tk()
+            window.title("Success")
+            center_window(window,200,200)
+            label = tkinter.Label(window, text = "The bot is ready to play!").pack()
+            label = tkinter.Label(window, text = "Close this window to let him play").pack()
+            window.mainloop()
+            g = 1
+            
         r = sessions.getOngoingGames("1")
-        if(sessions.getStatusCode(r) == 200):
+        
+        if(sessions.getStatusCode(r) == 200 and u == True):
             try:
-                print(sessions.getContent(r))
-                color = sessions.getContent(r)['nowPlaying'][0]['color']
-                isMyTurn = sessions.getContent(r)['nowPlaying'][0]['isMyTurn']
-                lastMove = sessions.getContent(r)['nowPlaying'][0]['lastMove']
-                
-                
-                if(move != lastMove):
+                #print(sessions.getContent(r))
+                cont = sessions.getContent(r)
+                color = cont['nowPlaying'][0]['color']
+                isMyTurn = cont['nowPlaying'][0]['isMyTurn']
+                lastMove = cont['nowPlaying'][0]['lastMove']
+                if(cont['nowPlaying'][0]['gameId'] != gameId):
+                    gameId = cont['nowPlaying'][0]['gameId']
+                    l = 'position startpos moves'
+                    move = '-10'
                     move_counter = 0
-                    move = lastMove
-                    l+=' '+move
+                    new_move = 0
+                    reminder = ''
+                    opponent_castle = 0
                 else:
+                    
+                                
+                    #print(reminder)
+                    if(move != lastMove):
+                        #print("yes")
+                        move_counter = 0
+                        move = lastMove
+                        move2 = move
+                        if(move!=''):
+                            #print(move)
+                            #print(move2)
+                            if(color == 'white'):
+                                if(move[0] == 'e' and move[1] == '8'):
+                                    if(opponent_castle == 0):
+                                        opponent_castle = 1
+                                        if(move[2] == 'h' and move[3] == '8'):
+                                            move2=move2[:2]+'g'+move2[3:]
+                                        elif(move[2] == 'a' and move[3] == '8'):
+                                            move2=move2[:2]+'c'+move2[3:]
+                            else:
+                                if(move[0] == 'e' and move[1] == '1'):
+                                    if(opponent_castle == 0):
+                                        opponent_castle = 1
+                                        if(move[2] == 'h' and move[3] == '1'):
+                                            move2=move2[:2]+'g'+move2[3:]
+                                        elif(move[2] == 'a' and move[3] == '1'):
+                                            move2=move2[:2]+'c'+move2[3:]
+                        #print(move2)
+                        new_move = 1
+                        if(isMyTurn == True):
+                            l+=' '+reminder+' '+move2
+                    else:
+                        if(isMyTurn == True):
+                            move_counter+=1
+                            
                     if(isMyTurn == True):
-                        move_counter+=1
-                        
-                if(isMyTurn == True):
-                    stockfish10.put(p,l)
-                    print(stockfish10.go(p, depth=20, t=0.3))
+                        stockfish10.put(p,l)
+                        #print(l)
+                        new_pos = stockfish10.go(p, depth=20, t=0.1)[9:13]
+                        #print(xy)
+                        mouse.click_somewhere(xy,new_pos,color)
+                        if(new_move or l == 'position startpos moves'):
+                            reminder = new_pos
+                            new_move = 0
+                        #print(new_pos)
             except:
-                pass
+                #print("entro")
+                l = 'position startpos moves'
+                move = '-10'
+                move_counter = 0
+                gameId = ''
+                new_move = 0
+                reminder = ''
+                opponent_castle = 0
              
     
 def btn5u(s1,s2):
@@ -140,7 +213,7 @@ if __name__ == "__main__":
     btn1 = tkinter.Button(window, text = "Create Session", fg = "red", height = 5, width = 20)
     btn2 = tkinter.Button(window, text = "Load Lichess Profile", fg = "green", command=lambda :  bt2(entry3.get()))
     btn3 = tkinter.Button(window, text = "Take a Screenshot of Lichess Board", fg = "purple", command=lambda :  btn3u()).grid(row = 40, column = 1)
-    btn4 = tkinter.Button(window, text = "Let The bot Play", fg = "orange").grid(row = 50, column = 1)
+    btn4 = tkinter.Button(window, text = "Let The bot Play", fg = "orange",command=lambda :  btn4u()).grid(row = 50, column = 1)
     btn5 = tkinter.Button(window, text = "Save Client Inf", fg = "yellow", command=lambda :  btn5u(entry1.get(),entry2.get()))
 
     btn0.bind("<Button-1>", webapp.bt0)
@@ -150,7 +223,7 @@ if __name__ == "__main__":
     btn5.grid(row = 0, column = 2)
     btn2.grid(row = 30, column = 1)
     
-    thread = Thread(target = threaded_function2)
+    thread = Thread(target = threaded_function2,args = (cs, ))
     thread.start()
     window.mainloop()
     if(pid != None):

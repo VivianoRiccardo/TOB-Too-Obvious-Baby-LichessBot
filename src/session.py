@@ -104,7 +104,7 @@ class IdSession:
     def getTvGames(self):
         return self.session.get(self.tv_games)
     def getRealTimeGameById(self,ids):
-        print(self.streaming_game[:self.streaming_game.find('{')]+ids)
+        #print(self.streaming_game[:self.streaming_game.find('{')]+ids)
         return self.session.get(self.streaming_game[:self.streaming_game.find('{')]+ids)
 
 
