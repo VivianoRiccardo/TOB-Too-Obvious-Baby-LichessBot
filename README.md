@@ -29,7 +29,7 @@ python3 interface.py
   <img src="https://i.ibb.co/tKrTCfw/Annotazione-2019-09-10-113314.png" alt="logo">
 </p>
 
-# Say the Area of the Chess board:
+# Select the Area of the Chess board:
 
 1) Click "Take a Screenshot of Lichess Board" button from interface.py
 
