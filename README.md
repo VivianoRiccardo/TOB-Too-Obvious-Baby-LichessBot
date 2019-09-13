@@ -15,8 +15,9 @@ according to the newest stockfish chess engine
 
 # Run
 
+```
 python3 interface.py
-
+```
 
 # Create a Lichess webApp
 
