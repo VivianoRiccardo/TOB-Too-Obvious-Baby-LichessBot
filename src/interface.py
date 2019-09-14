@@ -9,6 +9,7 @@ import stockfish10
 import mouse
 import os
 import signal
+from tkinter import ttk
 
 # Collect events until released
 
@@ -37,7 +38,8 @@ def center_window(root,w=300, h=200):
     y = (hs/2) - (h/2)
     root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-def threaded_function2(clicks):
+def threaded_function2(combo):
+    
     global pid
     pid = os.getpid()
     global there_is_session
@@ -66,7 +68,22 @@ def threaded_function2(clicks):
         window.mainloop()
     
     l = 'position startpos'
-    p = Popen("../bin/stockfish_10_x64_modern", stdout=PIPE, stdin=PIPE, universal_newlines=True)
+    s = combo.get()
+    engine = 'stockfish_6_x64_modern'
+	elif(s == '5'):
+		engine = 'stockfish_5_x64_modern'
+	elif(s == '6'):
+		engine = 'stockfish_6_x64_modern'
+	elif(s == '7'):
+		engine = 'stockfish_7_x64'
+	elif(s == '8'):
+		engine = 'stockfish_8_x64_modern'
+	elif(s == '9'):
+		engine = 'stockfish_9_x64'
+	elif(s == '10'):
+		engine = 'stockfish_10_x64_modern'
+		
+    p = Popen("../bin/"+engine, stdout=PIPE, stdin=PIPE, universal_newlines=True)
     stockfish10.get(p, verbose=True)
     stockfish10.putget(p, 'uci')
     stockfish10.putget(p, l)
@@ -147,7 +164,7 @@ def threaded_function2(clicks):
                     if(isMyTurn == True):
                         stockfish10.put(p,l)
                         #print(l)
-                        new_pos = stockfish10.go(p, depth=20, t=0.1)[9:13]
+                        new_pos = stockfish10.go(p, depth=20, t=0.03)[9:13]
                         #print(xy)
                         mouse.click_somewhere(xy,new_pos,color)
                         if(new_move or l == 'position startpos moves'):
@@ -223,7 +240,13 @@ if __name__ == "__main__":
     btn5.grid(row = 0, column = 2)
     btn2.grid(row = 30, column = 1)
     
-    thread = Thread(target = threaded_function2,args = (cs, ))
+    combo = ttk.Combobox(window)
+    combo['values']= (5,6,7,8,9,10)
+    combo.current(5)
+    combo.grid(column=1, row=60)
+    tkinter.Label(window, text = "Stockfish Level").grid(row = 60,column = 2)
+    
+    thread = Thread(target = threaded_function2,args = (combo, ))
     thread.start()
     window.mainloop()
     if(pid != None):
