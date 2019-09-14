@@ -70,19 +70,19 @@ def threaded_function2(combo):
     l = 'position startpos'
     s = combo.get()
     engine = 'stockfish_6_x64_modern'
-	elif(s == '5'):
-		engine = 'stockfish_5_x64_modern'
-	elif(s == '6'):
-		engine = 'stockfish_6_x64_modern'
-	elif(s == '7'):
-		engine = 'stockfish_7_x64'
-	elif(s == '8'):
-		engine = 'stockfish_8_x64_modern'
-	elif(s == '9'):
-		engine = 'stockfish_9_x64'
-	elif(s == '10'):
-		engine = 'stockfish_10_x64_modern'
-		
+    if(s == '5'):
+        engine = 'stockfish_5_x64_modern'
+    elif(s == '6'):
+        engine = 'stockfish_6_x64_modern'
+    elif(s == '7'):
+        engine = 'stockfish_7_x64'
+    elif(s == '8'):
+        engine = 'stockfish_8_x64_modern'
+    elif(s == '9'):
+        engine = 'stockfish_9_x64'
+    elif(s == '10'):
+        engine = 'stockfish_10_x64_modern'
+        
     p = Popen("../bin/"+engine, stdout=PIPE, stdin=PIPE, universal_newlines=True)
     stockfish10.get(p, verbose=True)
     stockfish10.putget(p, 'uci')
@@ -242,7 +242,7 @@ if __name__ == "__main__":
     
     combo = ttk.Combobox(window)
     combo['values']= (5,6,7,8,9,10)
-    combo.current(5)
+    combo.current(1)
     combo.grid(column=1, row=60)
     tkinter.Label(window, text = "Stockfish Level").grid(row = 60,column = 2)
     
