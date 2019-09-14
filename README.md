@@ -49,4 +49,4 @@ otherwise you have to reclick the button.
 Once You have selected the engine level and clicked the button "load lichess account" you cannot change
 the bot level
 
-Video Example https://www.youtube.com/watch?v=TG-pWUXUjqs
+Video https://www.youtube.com/watch?v=TG-pWUXUjqs
