@@ -17,3 +17,5 @@ pyautogui
 imutils
 cv2
 argparse
+signal
+os
