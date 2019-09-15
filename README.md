@@ -3,6 +3,11 @@
 This Bot can help you playing on lichess during real time games with a real time graphic interface with the best moves
 according to the newest stockfish chess engine
 
+LICHESS BOT INTERFACE
+ <p align="center">
+  <img src="https://i.ibb.co/DV5GX1L/lichessbot-interface.png" alt="logo">
+</p>
+
 # Requirements
 
 - python >= 3
