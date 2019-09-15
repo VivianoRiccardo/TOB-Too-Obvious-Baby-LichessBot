@@ -57,3 +57,15 @@ Once You have selected the engine level, the engine depth and the engine time ou
 the bot setup
 
 Video https://www.youtube.com/watch?v=TG-pWUXUjqs
+
+# How To avoid Ban for Cheating
+
+Here you can see the conditions to be caught cheating:
+
+ <p align="center">
+  <img src="https://i.ibb.co/jvmP5MR/Schermata-del-2019-09-15-23-48-45.png" alt="logo">
+</p>
+
+For This Reason Stockfish < 10 has been added and so for the Depth and Maximum random time waiting.
+Furthemore the bot doesn't click 2 differents squares when he has to move the pieces but it holds the mouse
+from Point A to B 
