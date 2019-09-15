@@ -1,6 +1,6 @@
 # OpenSource-Lichess-Bot
 
-This Bot can help you playing on lichess during real time games with a real time graphic interface with the best moves
+This Bot can help (cheating) you playing on lichess during real time games with a real time graphic interface with the best moves
 according to the newest stockfish chess engine
 
 LICHESS BOT INTERFACE
