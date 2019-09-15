@@ -11,6 +11,7 @@ import os
 import signal
 from tkinter import ttk
 
+
 # Collect events until released
 
 there_is_session = False
@@ -42,6 +43,7 @@ def threaded_function2(lista):
     combo = lista[0]
     combo2 = lista[1]
     combo3 = lista[2]
+    combo4 = lista[3]
     global pid
     pid = os.getpid()
     global there_is_session
@@ -71,6 +73,7 @@ def threaded_function2(lista):
     
     l = 'position startpos'
     s = combo.get()
+    waiting = (float)(combo4.get())
     engine = 'stockfish_6_x64_modern'
     if(s == '5'):
         engine = 'stockfish_5_x64_modern'
@@ -171,7 +174,7 @@ def threaded_function2(lista):
                         print(l)
                         new_pos = stockfish10.go(p, depth=depth, t=sec)[9:13]
                         print(xy)
-                        mouse.click_somewhere(xy,new_pos,color)
+                        mouse.click_somewhere(xy,new_pos,color,waiting)
                         if(new_move or l == 'position startpos moves'):
                             reminder = new_pos
                             new_move = 0
@@ -213,7 +216,7 @@ if __name__ == "__main__":
     
     window = tkinter.Tk()
     window.title("OpenSource Lichess Bot")
-    center_window(window,460,400)
+    center_window(window,460,420)
     window.resizable(0, 0)
     
     #top_frame = tkinter.Frame(window).pack()
@@ -260,7 +263,12 @@ if __name__ == "__main__":
     combo3.current(1)
     combo3.grid(column=1, row=80)
     tkinter.Label(window, text = "Seconds").grid(row = 80,column = 2)
-    lista = [combo,combo2,combo3]
+    combo4 = ttk.Combobox(window)
+    combo4['values']= (0.01,0.03,0.05,0.1,1,3,5,10,30,60,120,300,600)
+    combo4.current(5)
+    combo4.grid(column=1, row=90)
+    tkinter.Label(window, text = "Max random time wait").grid(row = 90,column = 2)
+    lista = [combo,combo2,combo3,combo4]
     thread = Thread(target = threaded_function2,args = (lista, ))
     thread.start()
     window.mainloop()

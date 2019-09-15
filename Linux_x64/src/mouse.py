@@ -4,6 +4,8 @@ import pyautogui
 import imutils
 import cv2
 import argparse
+import random
+import time
 
 def screenshot():
     image = pyautogui.screenshot()
@@ -69,189 +71,191 @@ def get_area():
     
     return refPt
 
-def click_somewhere(xy,moves,color):
-	#print(xy[0])
-	#print(type(xy[0][0]))
-	x1 = xy[0][0]
-	x2 = xy[1][0]
-	y1 = xy[0][1]
-	y2 = xy[1][1]
-	
-	xmax = -1
-	xmin = -1
-	ymax = -1
-	ymin = -1
-	
-	#print("we")
-	#print(moves)
-	if(x1 > x2):
-		xmax = x1
-		xmin = x2
-	else:
-		xmax = x2
-		xmin = x1
-	if(y1 > y2):
-		ymax = y1
-		ymin = y2
-	else:
-		ymax = y2
-		ymin = y1
-	
-	clickx1 = -1
-	clicky1 = -1
-	clickx2 = -1
-	clicky2 = -1
-	
-	dimensionxbox = ((xmax-xmin)/8)
-	centerxbox = ((xmax-xmin)/16)
-	dimensionybox = ((ymax-ymin)/8)
-	centerybox = ((ymax-ymin)/16)
-	
-	if(color == 'white'):
-		if(moves[0] == 'a'):
-			clickx1 = xmin + centerxbox
-		elif(moves[0] == 'b'):
-			clickx1 = xmin + dimensionxbox + centerxbox
-		elif(moves[0] == 'c'):
-			clickx1 = xmin + 2*dimensionxbox + centerxbox
-		elif(moves[0] == 'd'):
-			clickx1 = xmin + 3*dimensionxbox + centerxbox
-		elif(moves[0] == 'e'):
-			clickx1 = xmin + 4*dimensionxbox + centerxbox
-		elif(moves[0] == 'f'):
-			clickx1 = xmin + 5*dimensionxbox + centerxbox
-		elif(moves[0] == 'g'):
-			clickx1 = xmin + 6*dimensionxbox + centerxbox
-		elif(moves[0] == 'h'):
-			clickx1 = xmin + 7*dimensionxbox + centerxbox
-		
-		if(moves[1] == '1'):
-			clicky1 = ymax - centerybox
-		elif(moves[1] == '2'):
-			clicky1 = ymax - dimensionybox - centerybox
-		elif(moves[1] == '3'):
-			clicky1 = ymax - 2*dimensionybox - centerybox
-		elif(moves[1] == '4'):
-			clicky1 = ymax - 3*dimensionybox - centerybox
-		elif(moves[1] == '5'):
-			clicky1 = ymax - 4*dimensionybox - centerybox
-		elif(moves[1] == '6'):
-			clicky1 = ymax - 5*dimensionybox - centerybox
-		elif(moves[1] == '7'):
-			clicky1 = ymax - 6*dimensionybox - centerybox
-		elif(moves[1] == '8'):
-			clicky1 = ymax - 7*dimensionybox - centerybox
-		
-		if(moves[2] == 'a'):
-			clickx2 = xmin + centerxbox
-		elif(moves[2] == 'b'):
-			clickx2 = xmin + dimensionxbox + centerxbox
-		elif(moves[2] == 'c'):
-			clickx2 = xmin + 2*dimensionxbox + centerxbox
-		elif(moves[2] == 'd'):
-			clickx2 = xmin + 3*dimensionxbox + centerxbox
-		elif(moves[2] == 'e'):
-			clickx2 = xmin + 4*dimensionxbox + centerxbox
-		elif(moves[2] == 'f'):
-			clickx2 = xmin + 5*dimensionxbox + centerxbox
-		elif(moves[2] == 'g'):
-			clickx2 = xmin + 6*dimensionxbox + centerxbox
-		elif(moves[2] == 'h'):
-			clickx2 = xmin + 7*dimensionxbox + centerxbox
-		
-		if(moves[3] == '1'):
-			clicky2 = ymax - centerybox
-		elif(moves[3] == '2'):
-			clicky2 = ymax - dimensionybox - centerybox
-		elif(moves[3] == '3'):
-			clicky2 = ymax - 2*dimensionybox - centerybox
-		elif(moves[3] == '4'):
-			clicky2 = ymax - 3*dimensionybox - centerybox
-		elif(moves[3] == '5'):
-			clicky2 = ymax - 4*dimensionybox - centerybox
-		elif(moves[3] == '6'):
-			clicky2 = ymax - 5*dimensionybox - centerybox
-		elif(moves[3] == '7'):
-			clicky2 = ymax - 6*dimensionybox - centerybox
-		elif(moves[3] == '8'):
-			clicky2 = ymax - 7*dimensionybox - centerybox
-	
-	else:
-		if(moves[0] == 'h'):
-			clickx1 = xmin + centerxbox
-		elif(moves[0] == 'g'):
-			clickx1 = xmin + dimensionxbox + centerxbox
-		elif(moves[0] == 'f'):
-			clickx1 = xmin + 2*dimensionxbox + centerxbox
-		elif(moves[0] == 'e'):
-			clickx1 = xmin + 3*dimensionxbox + centerxbox
-		elif(moves[0] == 'd'):
-			clickx1 = xmin + 4*dimensionxbox + centerxbox
-		elif(moves[0] == 'c'):
-			clickx1 = xmin + 5*dimensionxbox + centerxbox
-		elif(moves[0] == 'b'):
-			clickx1 = xmin + 6*dimensionxbox + centerxbox
-		elif(moves[0] == 'a'):
-			clickx1 = xmin + 7*dimensionxbox + centerxbox
-		
-		if(moves[1] == '8'):
-			clicky1 = ymax - centerybox
-		elif(moves[1] == '7'):
-			clicky1 = ymax - dimensionybox - centerybox
-		elif(moves[1] == '6'):
-			clicky1 = ymax - 2*dimensionybox - centerybox
-		elif(moves[1] == '5'):
-			clicky1 = ymax - 3*dimensionybox - centerybox
-		elif(moves[1] == '4'):
-			clicky1 = ymax - 4*dimensionybox - centerybox
-		elif(moves[1] == '3'):
-			clicky1 = ymax - 5*dimensionybox - centerybox
-		elif(moves[1] == '2'):
-			clicky1 = ymax - 6*dimensionybox - centerybox
-		elif(moves[1] == '1'):
-			clicky1 = ymax - 7*dimensionybox - centerybox
-		
-		if(moves[2] == 'h'):
-			clickx2 = xmin + centerxbox
-		elif(moves[2] == 'g'):
-			clickx2 = xmin + dimensionxbox + centerxbox
-		elif(moves[2] == 'f'):
-			clickx2 = xmin + 2*dimensionxbox + centerxbox
-		elif(moves[2] == 'e'):
-			clickx2 = xmin + 3*dimensionxbox + centerxbox
-		elif(moves[2] == 'd'):
-			clickx2 = xmin + 4*dimensionxbox + centerxbox
-		elif(moves[2] == 'c'):
-			clickx2 = xmin + 5*dimensionxbox + centerxbox
-		elif(moves[2] == 'b'):
-			clickx2 = xmin + 6*dimensionxbox + centerxbox
-		elif(moves[2] == 'a'):
-			clickx2 = xmin + 7*dimensionxbox + centerxbox
-		
-		if(moves[3] == '8'):
-			clicky2 = ymax - centerybox
-		elif(moves[3] == '7'):
-			clicky2 = ymax - dimensionybox - centerybox
-		elif(moves[3] == '6'):
-			clicky2 = ymax - 2*dimensionybox - centerybox
-		elif(moves[3] == '5'):
-			clicky2 = ymax - 3*dimensionybox - centerybox
-		elif(moves[3] == '4'):
-			clicky2 = ymax - 4*dimensionybox - centerybox
-		elif(moves[3] == '3'):
-			clicky2 = ymax - 5*dimensionybox - centerybox
-		elif(moves[3] == '2'):
-			clicky2 = ymax - 6*dimensionybox - centerybox
-		elif(moves[3] == '1'):
-			clicky2 = ymax - 7*dimensionybox - centerybox
-	
-	#print(clickx1)
-	#print(clicky1)
-	#print(clickx2)
-	#print(clicky2)
-	
-		
-	pyautogui.click(clickx1, clicky1)
-	pyautogui.click(clickx2, clicky2)
-	
-	
+def click_somewhere(xy,moves,color,waiting):
+    #print(xy[0])
+    #print(type(xy[0][0]))
+    x1 = xy[0][0]
+    x2 = xy[1][0]
+    y1 = xy[0][1]
+    y2 = xy[1][1]
+    
+    xmax = -1
+    xmin = -1
+    ymax = -1
+    ymin = -1
+    
+    #print("we")
+    #print(moves)
+    if(x1 > x2):
+        xmax = x1
+        xmin = x2
+    else:
+        xmax = x2
+        xmin = x1
+    if(y1 > y2):
+        ymax = y1
+        ymin = y2
+    else:
+        ymax = y2
+        ymin = y1
+    
+    clickx1 = -1
+    clicky1 = -1
+    clickx2 = -1
+    clicky2 = -1
+    
+    dimensionxbox = ((xmax-xmin)/8)
+    centerxbox = ((xmax-xmin)/16)
+    dimensionybox = ((ymax-ymin)/8)
+    centerybox = ((ymax-ymin)/16)
+    
+    if(color == 'white'):
+        if(moves[0] == 'a'):
+            clickx1 = xmin + centerxbox
+        elif(moves[0] == 'b'):
+            clickx1 = xmin + dimensionxbox + centerxbox
+        elif(moves[0] == 'c'):
+            clickx1 = xmin + 2*dimensionxbox + centerxbox
+        elif(moves[0] == 'd'):
+            clickx1 = xmin + 3*dimensionxbox + centerxbox
+        elif(moves[0] == 'e'):
+            clickx1 = xmin + 4*dimensionxbox + centerxbox
+        elif(moves[0] == 'f'):
+            clickx1 = xmin + 5*dimensionxbox + centerxbox
+        elif(moves[0] == 'g'):
+            clickx1 = xmin + 6*dimensionxbox + centerxbox
+        elif(moves[0] == 'h'):
+            clickx1 = xmin + 7*dimensionxbox + centerxbox
+        
+        if(moves[1] == '1'):
+            clicky1 = ymax - centerybox
+        elif(moves[1] == '2'):
+            clicky1 = ymax - dimensionybox - centerybox
+        elif(moves[1] == '3'):
+            clicky1 = ymax - 2*dimensionybox - centerybox
+        elif(moves[1] == '4'):
+            clicky1 = ymax - 3*dimensionybox - centerybox
+        elif(moves[1] == '5'):
+            clicky1 = ymax - 4*dimensionybox - centerybox
+        elif(moves[1] == '6'):
+            clicky1 = ymax - 5*dimensionybox - centerybox
+        elif(moves[1] == '7'):
+            clicky1 = ymax - 6*dimensionybox - centerybox
+        elif(moves[1] == '8'):
+            clicky1 = ymax - 7*dimensionybox - centerybox
+        
+        if(moves[2] == 'a'):
+            clickx2 = xmin + centerxbox
+        elif(moves[2] == 'b'):
+            clickx2 = xmin + dimensionxbox + centerxbox
+        elif(moves[2] == 'c'):
+            clickx2 = xmin + 2*dimensionxbox + centerxbox
+        elif(moves[2] == 'd'):
+            clickx2 = xmin + 3*dimensionxbox + centerxbox
+        elif(moves[2] == 'e'):
+            clickx2 = xmin + 4*dimensionxbox + centerxbox
+        elif(moves[2] == 'f'):
+            clickx2 = xmin + 5*dimensionxbox + centerxbox
+        elif(moves[2] == 'g'):
+            clickx2 = xmin + 6*dimensionxbox + centerxbox
+        elif(moves[2] == 'h'):
+            clickx2 = xmin + 7*dimensionxbox + centerxbox
+        
+        if(moves[3] == '1'):
+            clicky2 = ymax - centerybox
+        elif(moves[3] == '2'):
+            clicky2 = ymax - dimensionybox - centerybox
+        elif(moves[3] == '3'):
+            clicky2 = ymax - 2*dimensionybox - centerybox
+        elif(moves[3] == '4'):
+            clicky2 = ymax - 3*dimensionybox - centerybox
+        elif(moves[3] == '5'):
+            clicky2 = ymax - 4*dimensionybox - centerybox
+        elif(moves[3] == '6'):
+            clicky2 = ymax - 5*dimensionybox - centerybox
+        elif(moves[3] == '7'):
+            clicky2 = ymax - 6*dimensionybox - centerybox
+        elif(moves[3] == '8'):
+            clicky2 = ymax - 7*dimensionybox - centerybox
+    
+    else:
+        if(moves[0] == 'h'):
+            clickx1 = xmin + centerxbox
+        elif(moves[0] == 'g'):
+            clickx1 = xmin + dimensionxbox + centerxbox
+        elif(moves[0] == 'f'):
+            clickx1 = xmin + 2*dimensionxbox + centerxbox
+        elif(moves[0] == 'e'):
+            clickx1 = xmin + 3*dimensionxbox + centerxbox
+        elif(moves[0] == 'd'):
+            clickx1 = xmin + 4*dimensionxbox + centerxbox
+        elif(moves[0] == 'c'):
+            clickx1 = xmin + 5*dimensionxbox + centerxbox
+        elif(moves[0] == 'b'):
+            clickx1 = xmin + 6*dimensionxbox + centerxbox
+        elif(moves[0] == 'a'):
+            clickx1 = xmin + 7*dimensionxbox + centerxbox
+        
+        if(moves[1] == '8'):
+            clicky1 = ymax - centerybox
+        elif(moves[1] == '7'):
+            clicky1 = ymax - dimensionybox - centerybox
+        elif(moves[1] == '6'):
+            clicky1 = ymax - 2*dimensionybox - centerybox
+        elif(moves[1] == '5'):
+            clicky1 = ymax - 3*dimensionybox - centerybox
+        elif(moves[1] == '4'):
+            clicky1 = ymax - 4*dimensionybox - centerybox
+        elif(moves[1] == '3'):
+            clicky1 = ymax - 5*dimensionybox - centerybox
+        elif(moves[1] == '2'):
+            clicky1 = ymax - 6*dimensionybox - centerybox
+        elif(moves[1] == '1'):
+            clicky1 = ymax - 7*dimensionybox - centerybox
+        
+        if(moves[2] == 'h'):
+            clickx2 = xmin + centerxbox
+        elif(moves[2] == 'g'):
+            clickx2 = xmin + dimensionxbox + centerxbox
+        elif(moves[2] == 'f'):
+            clickx2 = xmin + 2*dimensionxbox + centerxbox
+        elif(moves[2] == 'e'):
+            clickx2 = xmin + 3*dimensionxbox + centerxbox
+        elif(moves[2] == 'd'):
+            clickx2 = xmin + 4*dimensionxbox + centerxbox
+        elif(moves[2] == 'c'):
+            clickx2 = xmin + 5*dimensionxbox + centerxbox
+        elif(moves[2] == 'b'):
+            clickx2 = xmin + 6*dimensionxbox + centerxbox
+        elif(moves[2] == 'a'):
+            clickx2 = xmin + 7*dimensionxbox + centerxbox
+        
+        if(moves[3] == '8'):
+            clicky2 = ymax - centerybox
+        elif(moves[3] == '7'):
+            clicky2 = ymax - dimensionybox - centerybox
+        elif(moves[3] == '6'):
+            clicky2 = ymax - 2*dimensionybox - centerybox
+        elif(moves[3] == '5'):
+            clicky2 = ymax - 3*dimensionybox - centerybox
+        elif(moves[3] == '4'):
+            clicky2 = ymax - 4*dimensionybox - centerybox
+        elif(moves[3] == '3'):
+            clicky2 = ymax - 5*dimensionybox - centerybox
+        elif(moves[3] == '2'):
+            clicky2 = ymax - 6*dimensionybox - centerybox
+        elif(moves[3] == '1'):
+            clicky2 = ymax - 7*dimensionybox - centerybox
+    
+    #print(clickx1)
+    #print(clicky1)
+    #print(clickx2)
+    #print(clicky2)
+    k = random.randrange(0, waiting,0.001)
+    time.sleep(k)
+    
+    pyautogui.moveTo(clickx1, clicky1)
+    pyautogui.mouseDown()
+    pyautogui.mouseUp(clickx2, clicky2)
+    
+    
