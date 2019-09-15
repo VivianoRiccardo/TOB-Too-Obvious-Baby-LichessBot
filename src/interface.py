@@ -38,8 +38,10 @@ def center_window(root,w=300, h=200):
     y = (hs/2) - (h/2)
     root.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-def threaded_function2(combo):
-    
+def threaded_function2(lista):
+    combo = lista[0]
+    combo2 = lista[1]
+    combo3 = lista[2]
     global pid
     pid = os.getpid()
     global there_is_session
@@ -82,7 +84,10 @@ def threaded_function2(combo):
         engine = 'stockfish_9_x64'
     elif(s == '10'):
         engine = 'stockfish_10_x64_modern'
-        
+    
+    depth = (int)(combo2.get())
+    sec = (float)(combo3.get())
+    
     p = Popen("../bin/"+engine, stdout=PIPE, stdin=PIPE, universal_newlines=True)
     stockfish10.get(p, verbose=True)
     stockfish10.putget(p, 'uci')
@@ -163,16 +168,16 @@ def threaded_function2(combo):
                             
                     if(isMyTurn == True):
                         stockfish10.put(p,l)
-                        #print(l)
-                        new_pos = stockfish10.go(p, depth=20, t=0.03)[9:13]
-                        #print(xy)
+                        print(l)
+                        new_pos = stockfish10.go(p, depth=depth, t=sec)[9:13]
+                        print(xy)
                         mouse.click_somewhere(xy,new_pos,color)
                         if(new_move or l == 'position startpos moves'):
                             reminder = new_pos
                             new_move = 0
-                        #print(new_pos)
+                        print(new_pos)
             except:
-                #print("entro")
+                print("entro")
                 l = 'position startpos moves'
                 move = '-10'
                 move_counter = 0
@@ -208,7 +213,7 @@ if __name__ == "__main__":
     
     window = tkinter.Tk()
     window.title("OpenSource Lichess Bot")
-    center_window(window,460,380)
+    center_window(window,460,400)
     window.resizable(0, 0)
     
     #top_frame = tkinter.Frame(window).pack()
@@ -245,8 +250,18 @@ if __name__ == "__main__":
     combo.current(1)
     combo.grid(column=1, row=60)
     tkinter.Label(window, text = "Stockfish Level").grid(row = 60,column = 2)
-    
-    thread = Thread(target = threaded_function2,args = (combo, ))
+    combo2 = ttk.Combobox(window)
+    combo2['values']= (1,2,3,5,10,15,20)
+    combo2.current(1)
+    combo2.grid(column=1, row=70)
+    tkinter.Label(window, text = "Depth").grid(row = 70,column = 2)
+    combo3 = ttk.Combobox(window)
+    combo3['values']= (0.01,0.03,0.05,0.1,1,5,10,30,60,120,300,600)
+    combo3.current(1)
+    combo3.grid(column=1, row=80)
+    tkinter.Label(window, text = "Seconds").grid(row = 80,column = 2)
+    lista = [combo,combo2,combo3]
+    thread = Thread(target = threaded_function2,args = (lista, ))
     thread.start()
     window.mainloop()
     if(pid != None):

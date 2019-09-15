@@ -35,5 +35,3 @@ def go(p, depth=None, t=1.0, dt=0.05, verbose=False):
         if not stopped and time.time() - t0 > t:
             put(p, "stop")
             stopped = True
-
-
