@@ -8,6 +8,8 @@ LICHESS BOT INTERFACE
   <img src="https://i.ibb.co/DV5GX1L/lichessbot-interface.png" alt="logo">
 </p>
 
+The exec files both for linux and windows user are in the Prog directory: don't move them from there, just run them!
+
 # Requirements
 
 - python >= 3
