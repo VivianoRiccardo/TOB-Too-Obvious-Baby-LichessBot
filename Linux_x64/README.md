@@ -66,4 +66,4 @@ Here you can see the conditions to be caught cheating:
 
 For This Reason Stockfish < 10 has been added and so for the Depth and Maximum random time waiting.
 Furthemore the bot doesn't click 2 differents squares when he has to move the pieces but it holds the mouse
-from Point A to B
+from Point A to B 
