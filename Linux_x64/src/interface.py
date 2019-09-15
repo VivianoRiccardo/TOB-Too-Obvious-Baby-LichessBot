@@ -264,7 +264,7 @@ if __name__ == "__main__":
     combo3.grid(column=1, row=80)
     tkinter.Label(window, text = "Seconds").grid(row = 80,column = 2)
     combo4 = ttk.Combobox(window)
-    combo4['values']= (0.01,0.03,0.05,0.1,1,3,5,10,30,60,120,300,600)
+    combo4['values']= (0.02,0.03,0.05,0.1,1,3,5,10,30,60,120,300,600)
     combo4.current(5)
     combo4.grid(column=1, row=90)
     tkinter.Label(window, text = "Max random time wait").grid(row = 90,column = 2)
