@@ -24,6 +24,8 @@ according to the newest stockfish chess engine
 
 - Lichess account
 
+- scrot (used by opencv-python) library
+
 # Run
 
 ```
