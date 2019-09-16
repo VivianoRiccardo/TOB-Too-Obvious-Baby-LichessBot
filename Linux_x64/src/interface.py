@@ -215,7 +215,7 @@ if __name__ == "__main__":
 
     
     window = tkinter.Tk()
-    window.title("OpenSource Lichess Bot")
+    window.title("TOB")
     center_window(window,460,420)
     window.resizable(0, 0)
     
