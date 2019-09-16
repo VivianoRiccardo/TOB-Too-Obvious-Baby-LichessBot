@@ -28,8 +28,16 @@ according to the newest stockfish chess engine
 
 # Run
 
+1) From source code, go yo src directory and:
+
 ```
 python3 interface.py
+```
+
+2) From Binary, go yo prog directory and:
+
+```
+./TOB
 ```
 
 # Create a Lichess webApp
@@ -62,7 +70,16 @@ otherwise you have to reclick the button.
 Once You have selected the engine level the engine depth and the engine time out seconds, if you click the button "load lichess account" you cannot change
 the TOB setup anymore. if you want to rechange the setup you have to close TOB and run it again
 
-Video https://www.youtube.com/watch?v=TG-pWUXUjqs
+Videos:
+
+- How to use it:
+ 
+https://www.youtube.com/watch?v=TG-pWUXUjqs
+
+- How to be a chess cancer:
+
+https://youtu.be/4D_4-AwHzEY
+
 
 # How To avoid Ban for Cheating
 
