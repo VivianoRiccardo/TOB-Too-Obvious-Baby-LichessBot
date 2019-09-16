@@ -28,13 +28,13 @@ according to the newest stockfish chess engine
 
 # Run
 
-1) From source code, go yo src directory and:
+1) From source code, go to src directory and:
 
 ```
 python3 interface.py
 ```
 
-2) From Binary, go yo prog directory and:
+2) From Binary, go to prog directory and:
 
 ```
 ./TOB
