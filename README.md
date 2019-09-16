@@ -71,7 +71,7 @@ Here you can see the conditions necessary to be considered cheater (directly fro
 </p>
 
 For These Reasons Stockfish < 10 engine, stockfish Depth parameter, and Maximum random time waiting parameter have been added.
-Furthemore the TOB doesn't click 2 differents squares when it has to move the pieces but it holds the mouse
+Furthemore TOB doesn't click 2 differents squares when it has to move the pieces but it holds the mouse
 from Point A to B. The best setting up until now seems to be:
 - Stockfish 5 
 - depth 3 
