@@ -80,3 +80,9 @@ from Point A to B. The best setting up until now seems to be:
 
 with these conditions TOB can play bullets with minimum +1 increments and is also able to beat 2300 elo masters
 (  and you will never be banned for cheating ;)  ).
+
+# Executable Files
+
+- At The Moment TOB is available only for Linux_x86_64
+
+You can find TOB for linux in the Linux_X86_64/prog directory. Don't move from there! just run it! 
