@@ -11,7 +11,7 @@ according to the newest stockfish chess engine
 
 - TOB INTERFACE
  <p align="center">
-  <img src="https://i.ibb.co/ygjYTXt/schermata.png" alt="logo">
+  <img src="https://i.ibb.co/z8g1rqz/tob.png" alt="logo">
 </p>
 
 # Requirements
@@ -54,7 +54,7 @@ python3 interface.py
 
 You can play only 1 game each time.
 When you click "take screenshot of lichess board" and you save the board area
-you can't move that chessboard if you want that the bot works perfectly,
+you can't move that chessboard if you want that TOB works perfectly,
 otherwise you have to reclick the button.
 
 Once You have selected the engine level the engine depth and the engine time out seconds, if you click the button "load lichess account" you cannot change
