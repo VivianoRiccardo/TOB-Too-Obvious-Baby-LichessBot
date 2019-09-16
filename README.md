@@ -1,14 +1,18 @@
-# OpenSource-Lichess-Bot
+# TOB
 
-This Bot can help (cheating) you playing on lichess during real time games with a real time graphic interface with the best moves
+TOB is the reverse of BOT and stands for:
+
+Too
+Obvius
+Bitch
+
+TOB is a lichess Bot that can help you playing (cheating) on lichess during real time games with a real time graphic interface with the best moves
 according to the newest stockfish chess engine
 
-LICHESS BOT INTERFACE
+- TOB INTERFACE
  <p align="center">
-  <img src="https://i.ibb.co/DV5GX1L/lichessbot-interface.png" alt="logo">
+  <img src="https://i.ibb.co/ygjYTXt/schermata.png" alt="logo">
 </p>
-
-The exec files both for linux and windows user are in the Prog directory: don't move them from there, just run them!
 
 # Requirements
 
@@ -40,7 +44,7 @@ python3 interface.py
 
 1) Click "Take a Screenshot of Lichess Board" button from interface.py
 
-2) The bot is gonna take a screenshot, so you have to  make visible in your desktop the lichess board when you click that button
+2) TOB is gonna take a screenshot, so you have to  make visible in your desktop the lichess board when you click that button
 
 3) select the chess board from the saved image
 
@@ -50,22 +54,29 @@ python3 interface.py
 
 You can play only 1 game each time.
 When you click "take screenshot of lichess board" and you save the board area
-you can't move that chessboard if you want that the bot works perfectly
+you can't move that chessboard if you want that the bot works perfectly,
 otherwise you have to reclick the button.
 
-Once You have selected the engine level, the engine depth and the engine time out seconds and you click the button "load lichess account" you cannot change
-the bot setup
+Once You have selected the engine level the engine depth and the engine time out seconds, if you click the button "load lichess account" you cannot change
+the TOB setup anymore. if you want to rechange the setup you have to close TOB and run it again
 
 Video https://www.youtube.com/watch?v=TG-pWUXUjqs
 
 # How To avoid Ban for Cheating
 
-Here you can see the conditions to be caught cheating:
+Here you can see the conditions necessary to be considered cheater (directly from lichess opensource repo):
 
  <p align="center">
   <img src="https://i.ibb.co/jvmP5MR/Schermata-del-2019-09-15-23-48-45.png" alt="logo">
 </p>
 
-For This Reason Stockfish < 10 has been added and so for the Depth and Maximum random time waiting.
-Furthemore the bot doesn't click 2 differents squares when he has to move the pieces but it holds the mouse
-from Point A to B 
+For These Reasons Stockfish < 10 engine, stockfish Depth parameter, and Maximum random time waiting parameter have been added.
+Furthemore the TOB doesn't click 2 differents squares when it has to move the pieces but it holds the mouse
+from Point A to B. The best setting up until now seems to be:
+- Stockfish 5 
+- depth 3 
+- secs = 1 
+- time waiting = 5.
+
+with these conditions TOB can play bullets with minimum +1 increments and is also able to beat 2300 elo masters
+(  and you will never be banned for cheating ;)  ).
