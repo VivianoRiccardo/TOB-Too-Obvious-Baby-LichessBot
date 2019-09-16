@@ -253,6 +253,6 @@ def click_somewhere(xy,moves,color,waiting):
     #print(clicky2)
     pyautogui.moveTo(clickx1, clicky1)
     pyautogui.mouseDown()
-    k = random.randrange(0, 1000000)%(waiting*10000)/1000000
+    k = random.randrange(0, 100000)%(waiting*10000)/10000
     time.sleep(k)
     pyautogui.mouseUp(clickx2, clicky2)
