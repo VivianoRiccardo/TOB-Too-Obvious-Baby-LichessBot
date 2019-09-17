@@ -34,11 +34,7 @@ according to the newest stockfish chess engine
 python3 interface.py
 ```
 
-2) From Binary, go to prog directory and:
-
-```
-./TOB
-```
+2) From Binary, go to prog directory and click 2 times on BOT
 
 # Create a Lichess webApp
 
@@ -102,6 +98,6 @@ with these conditions TOB can play bullets with minimum +1 increments and is als
 
 # Executable Files
 
-- At The Moment TOB is available only for Linux_x86_64
+- At The Moment TOB is available only for Linux_x86_64 and Windows_x86_64
 
 You can find TOB for linux in the Linux_X86_64/prog directory. Don't move from there! just run it! 
