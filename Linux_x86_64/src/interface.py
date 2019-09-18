@@ -171,16 +171,15 @@ def threaded_function2(lista):
                             
                     if(isMyTurn == True):
                         stockfish10.put(p,l)
-                        print(l)
+                        print("stockfish input:\n"+str(l))
                         new_pos = stockfish10.go(p, depth=depth, t=sec)[9:13]
-                        print(xy)
                         mouse.click_somewhere(xy,new_pos,color,waiting)
                         if(new_move or l == 'position startpos moves'):
                             reminder = new_pos
                             new_move = 0
-                        print(new_pos)
+                        print("Best move"+ str(new_pos))
             except:
-                print("entro")
+                print("No Ongoing matches")
                 l = 'position startpos moves'
                 move = '-10'
                 move_counter = 0

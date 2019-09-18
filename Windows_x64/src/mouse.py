@@ -258,7 +258,7 @@ def click_somewhere(xy,moves,color,waiting):
     pyautogui.mouseUp(clickx2, clicky2)
 
     #promtions:
-    if(len(moves > 4)):
+    if(len(moves) > 4):
         time.sleep(0.1)
         if(moves[5] == 'q'):
             pyautogui.click(clickx2, clicky2)
