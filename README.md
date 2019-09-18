@@ -34,7 +34,7 @@ according to the newest stockfish chess engine
 python3 interface.py
 ```
 
-2) From Binary, go to prog directory and click 2 times on BOT
+2) From Binary, go to prog directory and click 2 times on TOB
 
 # Create a Lichess webApp
 

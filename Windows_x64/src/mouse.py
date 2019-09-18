@@ -256,3 +256,15 @@ def click_somewhere(xy,moves,color,waiting):
     k = random.randrange(0, 100000)%(waiting*10000)/10000
     time.sleep(k)
     pyautogui.mouseUp(clickx2, clicky2)
+
+    #promtions:
+    if(len(moves > 4)):
+        time.sleep(0.1)
+        if(moves[5] == 'q'):
+            pyautogui.click(clickx2, clicky2)
+        elif(moves[5] == 'k'):
+            pyautogui.click(clickx2, clicky2+dimensionybox)
+        elif(moves[5] == 't'):
+            pyautogui.click(clickx2, clicky2+2*dimensionybox)
+        elif(moves[5] == 'b'):
+            pyautogui.click(clickx2, clicky2+3*dimensionybox)
