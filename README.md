@@ -34,7 +34,7 @@ according to the newest stockfish chess engine
 python3 interface.py
 ```
 
-2) From Binary, go to prog directory and click 2 times on TOB
+2) From Binary, go to prog directory and double click on TOB
 
 # Create a Lichess webApp
 
@@ -55,6 +55,17 @@ python3 interface.py
 3) select the chess board from the saved image
 
 4) press "c" to save the chess area, press "r" to reset the chess area
+
+# Letting the bot think instead of play
+
+With this button TOB is gonna suggest you the best moves according to the stockfish settings, but it doesn't move the pieces,
+when then you move the piece you have to insert the move you made in the entry for your moves. which entry can be inserted?
+
+Examples:
+
+- e2e4, e7e5 normal moves
+- e7e8q for propmotion to queen (also: k knight, b bishop, r rook)
+- e1g1 e8g8 e1c1 e8c8 for castling 
 
 # How to Use it
 
