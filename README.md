@@ -64,7 +64,7 @@ when then you move the piece you have to insert the move you made in the entry f
 Examples:
 
 - e2e4, e7e5 normal moves
-- e7e8q for propmotion to queen (also: k knight, b bishop, r rook)
+- e7e8q for promotion to queen (also: k knight, b bishop, r rook)
 - e1g1 e8g8 e1c1 e8c8 for castling 
 
 # How to Use it
