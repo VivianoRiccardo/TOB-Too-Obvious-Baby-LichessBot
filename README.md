@@ -11,7 +11,7 @@ according to the newest stockfish chess engine
 
 - TOB INTERFACE
  <p align="center">
-  <img src="https://i.ibb.co/z8g1rqz/tob.png" alt="logo">
+  <img src="https://i.ibb.co/tMZPwkh/tob22.png" alt="logo">
 </p>
 
 # Requirements
@@ -99,10 +99,11 @@ Here you can see the conditions necessary to be considered cheater (directly fro
 For These Reasons Stockfish < 10 engine, stockfish Depth parameter, and Maximum random time waiting parameter have been added.
 Furthemore TOB doesn't click 2 differents squares when it has to move the pieces but it holds the mouse
 from Point A to B. The best setting up until now seems to be:
-- Stockfish 5 
+- Stockfish 10 
 - depth 3 
 - secs = 1 
 - time waiting = 5.
+- alternating your games with tob games
 
 with these conditions TOB can play bullets with minimum +1 increments and is also able to beat 2300 elo masters
 (  and you will never be banned for cheating ;)  ).
