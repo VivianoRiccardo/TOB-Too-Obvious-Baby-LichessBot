@@ -257,7 +257,7 @@ if __name__ == "__main__":
     window = tkinter.Tk()
     window.title("TOB")
     center_window(window,600,500)
-    window.resizable(0, 0)
+    window.resizable(True, True)
     
     #top_frame = tkinter.Frame(window).pack()
     #bottom_frame = tkinter.Frame(window).pack(side = "bottom")
