@@ -4,7 +4,7 @@ TOB is the reverse of BOT and stands for:
 
 Too
 Obvious
-Bitch
+Baby
 
 TOB is a lichess Bot that can help you playing (cheating) on lichess during real time games with a real time graphic interface with the best moves
 according to the newest stockfish chess engine
