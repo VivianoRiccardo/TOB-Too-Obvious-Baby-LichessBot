@@ -1,3 +1,7 @@
+TOB doesn' work anymore, and now i have no time to fix
+it. TOB was created just for fun and as you can see
+from the code you i didn't give it too much importance. 
+
 # TOB
  
 TOB is the reverse of BOT and stands for:
