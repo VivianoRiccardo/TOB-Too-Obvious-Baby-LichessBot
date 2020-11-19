@@ -1,6 +1,6 @@
 TOB doesn' work anymore, and now i have no time to fix
-it. TOB was created just for fun and as you can see
-from the code you i didn't give it too much importance. 
+it. As you can see from the code it was just a rough
+project created for fun. 
 
 # TOB
  
