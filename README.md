@@ -10,7 +10,7 @@ Too
 Obvious
 Baby
 
-TOB is a lichess Bot that can help you playing (cheating) on lichess during real time games with a real time graphic interface with the best moves
+TOB is a lichess Bot that can help you play (cheat) on lichess during real time games with a real time graphic interface with the best moves
 according to the newest stockfish chess engine
 
 - TOB INTERFACE
@@ -62,7 +62,7 @@ python3 interface.py
 
 # Letting the bot think instead of play
 
-With this button TOB is gonna suggest you the best moves according to the stockfish settings, but it doesn't move the pieces,
+With this button TOB will suggest you the best moves according to the stockfish settings, but it doesn't move the pieces,
 when then you move the piece you have to insert the move you made in the entry for your moves. which entry can be inserted?
 
 Examples:
@@ -102,7 +102,7 @@ Here you can see the conditions necessary to be considered cheater (directly fro
 
 For These Reasons Stockfish < 10 engine, stockfish Depth parameter, and Maximum random time waiting parameter have been added.
 Furthemore TOB doesn't click 2 differents squares when it has to move the pieces but it holds the mouse
-from Point A to B. The best setting up until now seems to be:
+from Point A to B. The best set up until now seems to be:
 - Stockfish 10 
 - depth 3 
 - secs = 1 
